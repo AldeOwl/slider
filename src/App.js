@@ -2,12 +2,23 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Grid from 'react-bootstrap/lib/Grid';
+import GetData from './services/getData';
+
+
+import Grid from 'react-bootstrap/lib/Grid'
 import styled from 'styled-components'
 
 import Header from './Components/Header'
 import Menu from './Components/Menu'
 import Main from './Components/Main'
+
+const request = new GetData();
+
+request.getAllPost()
+  .then( data => console.log(data));
+
+request.getPost(5)
+  .then( data => console.log(data));
 
 const url = process.env.PUBLIC_URL + '/img/bg.png'
 
@@ -50,7 +61,6 @@ class App extends Component {
             <Main/>
           </Grid>
         </MainWrapper>
-        <Main/>
       </div>
     );
   }
